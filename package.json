@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start-gateway": "nodemon --exec babel-node gateway.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:offline": "serverless offline start"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +14,9 @@
   "dependencies": {
     "@apollo/gateway": "^0.19.1",
     "apollo-server": "^2.16.1",
-    "graphql": "^15.3.0"
+    "apollo-server-lambda": "^2.16.1",
+    "graphql": "^15.3.0",
+    "serverless-offline": "^6.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",

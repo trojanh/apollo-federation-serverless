@@ -1,4 +1,5 @@
 const { ApolloServer } = require('apollo-server')
+const { ApolloServer: ApolloServerLambda,  } = require('apollo-server-lambda')
 
 const { ApolloGateway } = require('@apollo/gateway')
 
@@ -9,12 +10,43 @@ const gateway = new ApolloGateway({
   ]
 })
 
-;(async () => {
-  const { schema, executor } = await gateway.load()
+// ;(async () => {
 
-  const server = new ApolloServer({ schema, executor })
+//   const { schema, executor } = await gateway.load()
 
-  server.listen().then(({ url }) => {
-    console.log(`🚀 Server ready at ${url}`)
-  })
-})()
+//   const server = new ApolloServer({ schema, executor })
+
+//   server.listen().then(({ url }) => {
+//     console.log(`🚀 Server ready at ${url}`)
+//   })
+// })()
+
+const createHandler = async () => {
+  const { schema, executor } = await gateway.load();
+  const server = new ApolloServerLambda({
+    schema,
+    executor,
+    introspection: true,
+    playground: true,
+    context: ({ event, context }) => ({
+      headers: event.headers,
+      functionName: context.functionName,
+      event,
+      context,
+    }),
+  });
+  // eslint-disable-next-line no-return-await
+  return server.createHandler({
+    cors: {
+      origin: '*',
+      credentials: true,
+      methods: 'GET, POST',
+      allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+    },
+  });
+};
+
+// eslint-disable-next-line import/prefer-default-export
+exports.graphqlHandler = (event, context, callback) => {
+  createHandler().then(handler => handler(event, context, callback));
+};
