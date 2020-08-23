@@ -28,6 +28,7 @@ const createHandler = async () => {
     executor,
     introspection: true,
     playground: true,
+    subscriptions: false,
     context: ({ event, context }) => ({
       headers: event.headers,
       functionName: context.functionName,

@@ -4,28 +4,11 @@ This repository is a demo of building microservices using Apollo federation. Apo
 
 It contains the simple blog microservices `user` , and `post` services which gets connected using `gateway`
 
+Access gateway Graphql playground on: http://localhost:3000/dev/graphql
+
 ## Installation
 
-`User Service`
-
 ```bash
-cd services/UserService
-npm install
-npm run dev
+npm run install # installs dependencies for all services and gateway
+npm run dev:all # start all services and gateway servers
 ```
-
-`Post Service`
-
-```bash
-cd services/PostService
-npm install
-npm run dev
-```
-
-` Gateway `
-
-```bash
-npm install
-npm run start-gateway
-```
-
