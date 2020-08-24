@@ -55,6 +55,13 @@ type updatePostResponse{
 
 type createPostResponse {
     success : Boolean
+    data : Post
+    error : Error
+}
+
+type fetchAllPostsResponse {
+    success : Boolean
+    data : [Post]
     error : Error
 }
 

@@ -1,16 +1,13 @@
 import PostModel from '../Model'
 export default async (parent, args, context) => {
   try {
-    let postInfo = {
-      name: args.request.data.name,
-      userId: args.request.data.userId,
-      description: args.request.data.description
-    }
+    const { data: postInfo } = args.request
 
-    await PostModel.createPost(postInfo)
+    const postCollection = await PostModel.create(postInfo)
 
     return {
       success: true,
+      data: postCollection,
       error: null
     }
   } catch (e) {

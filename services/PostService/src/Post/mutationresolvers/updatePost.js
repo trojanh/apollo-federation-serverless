@@ -2,11 +2,10 @@ import PostModel from '../Model'
 
 export default async (parent, args, context) => {
   try {
-    const postId = args.request.data.postId
+    const { data: postInfo } = args.request
+    const { postId } = postInfo
 
-    const postInfo = args.request.data
-
-    await PostModel.updatePost(postId, postInfo)
+    await PostModel.updateOne({ _id: postId }, postInfo)
 
     return {
       success: true,

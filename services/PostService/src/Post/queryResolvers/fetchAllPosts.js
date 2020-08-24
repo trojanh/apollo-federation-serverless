@@ -1,13 +1,13 @@
 import PostModel from '../Model'
 export default async (parent, args, context) => {
   try {
-    const userId = args.request.data.userId
-
-    const postCollection = await PostModel.find({ userId }).lean()
+    const postCollections = await PostModel.find({}, null, {
+      sort: { createdAt: 1 }
+    }).lean()
 
     return {
       success: true,
-      data: postCollection,
+      data: postCollections,
       error: null
     }
   } catch (e) {

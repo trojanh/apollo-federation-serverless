@@ -8,6 +8,7 @@ export const postTypeDefs = gql`
   extend type Query {
     fetchPostById(request: fetchPostByIdInput): fetchPostByIdResponse
     fetchPostByUserId(request: fetchPostByUserIdInput): fetchPostByUserResponse
+    fetchAllPosts: fetchAllPostsResponse
   }
 
   extend type Mutation {

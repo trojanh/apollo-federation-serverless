@@ -25,6 +25,7 @@ const typeDefs = gql`
     _id: ID
     name: String
     description: String
+    createdAt: String
   }
 
   ${postTypeDefs}
@@ -32,8 +33,8 @@ const typeDefs = gql`
 
 const resolverReferences = {
   User: {
-    async posts(user) {
-      return PostModel.getPostByUserId(user._id)
+    async posts({ _id }) {
+      return PostModel.findOne({ _id })
     }
   }
 }

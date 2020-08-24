@@ -2,9 +2,9 @@ import PostModel from '../Model'
 
 export default async (parent, args, context) => {
   try {
-    const postId = args.request.data.postId
+    const { postId } = args.request.data
 
-    const postCollection = await PostModel.getPostById(postId)
+    const postCollection = await PostModel.findOne({ _id: postId }).lean()
 
     return {
       success: true,

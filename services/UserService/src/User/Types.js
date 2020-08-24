@@ -2,16 +2,16 @@ export default `
 
   input fetchUserByIdInputData {
       userId : String!
-  }  
+  }
 
   input fetchUserByIdInput {
       data : fetchUserByIdInputData!
-  }  
+  }
 
   input createUserInputData {
       name : String
       email : String
-  }  
+  }
 
   input createUserInput{
       data : createUserInputData
@@ -31,6 +31,7 @@ export default `
 
   type createUserResponse {
       success : Boolean
+      data : User
       error : Error
   }
 `

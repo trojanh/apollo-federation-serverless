@@ -14,7 +14,7 @@ export const userTypeDefs =`
     type Mutation{
         createUser(request: createUserInput) : createUserResponse
     }
-` 
+`
 
 export const userResolvers = {
     Query : {
