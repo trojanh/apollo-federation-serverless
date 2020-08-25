@@ -16,6 +16,15 @@ input fetchPostByIdInput {
     data : fetchPostByIdInputData
 }
 
+input fetchAllPostsInput {
+    cursor : fetchAllPostsInputData
+}
+
+input fetchAllPostsInputData {
+    page : Int
+    limit : Int
+}
+
 input updatePostInputData{
     postId : String
     name : String

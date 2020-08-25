@@ -1,8 +1,9 @@
-import fetchUserById from './fetchUserById';
+import fetchUserById from './fetchUserByName';
 import fetchAllUser from './fetchAllUser';
+import fetchUserByName from './fetchUserByName'
 
-
-export default { 
-    fetchUserById,
-    fetchAllUser
+export default {
+  fetchUserById,
+  fetchAllUser,
+  fetchUserByName
 }

@@ -1,10 +1,15 @@
 import PostModel from '../Model'
 export default async (parent, args, context) => {
   try {
-    const postCollections = await PostModel.find({}, null, {
-      sort: { createdAt: 1 }
-    }).lean()
+    console.log({data: args})
+    const { page, limit }  = args.requests.cursor
 
+    const postCollections = await PostModel.find({})
+    .sort({ createdAt: -1 })
+    .skip(page * limit) //Notice here
+    .limit(limit)
+    .lean()
+    console.log({postCollections})
     return {
       success: true,
       data: postCollections,

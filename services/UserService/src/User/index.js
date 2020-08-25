@@ -8,6 +8,7 @@ export const userTypeDefs =`
 
     type Query{
         fetchUserById(request: fetchUserByIdInput) : fetchUserByIdResponse
+        fetchUserByName(request: fetchUserByNameInput) : fetchUserByNameResponse
         fetchAllUser : fetchAllUserResponse
     }
 

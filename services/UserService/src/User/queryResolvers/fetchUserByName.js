@@ -1,12 +1,12 @@
 import UserModel from '../Model'
-
 export default async (parent, args, context) => {
   try {
-    const { data: userInfo } = args.request
-    const { name } = userInfo
-    const existingUser = await UserModel.findOne({ name })
-    if (existingUser) throw new Error('Username already taken.')
-    const userCollection = await UserModel.create(userInfo)
+    const { name } = args.request.data
+
+    const userCollection = await UserModel.findOne({
+      name
+    }).lean()
+
     return {
       success: true,
       data: userCollection,

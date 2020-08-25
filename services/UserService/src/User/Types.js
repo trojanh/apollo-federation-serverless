@@ -4,16 +4,24 @@ export default `
       userId : String!
   }
 
+  input fetchUserByNameInputData {
+    name : String!
+  }
+
+  input fetchUserByNameInput {
+    data : fetchUserByNameInputData!
+  }
+
   input fetchUserByIdInput {
       data : fetchUserByIdInputData!
   }
 
   input createUserInputData {
-      name : String
-      email : String
+      name: String!
+      email: String
   }
 
-  input createUserInput{
+  input createUserInput {
       data : createUserInputData
   }
 
@@ -21,6 +29,12 @@ export default `
       success : Boolean
       data : [User!]
       error : Error
+  }
+
+  type fetchUserByNameResponse {
+    success : Boolean
+    data : User
+    error : Error
   }
 
   type fetchUserByIdResponse {
