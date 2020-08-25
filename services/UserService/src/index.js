@@ -29,8 +29,8 @@ const typeDefs = gql`
 
 const resolveRef = {
   User: {
-    async __resolveReference({ _id }) {
-      return await UserModel.findOne({ _id })
+    async __resolveReference(user) {
+      return await UserModel.findOne({ _id: user._id })
     }
   }
 }
@@ -53,6 +53,7 @@ mongoose
           resolvers
         }
       ]),
+      // @ts-ignore
       context: ({ req, res, context }) => {
         return {
           req,

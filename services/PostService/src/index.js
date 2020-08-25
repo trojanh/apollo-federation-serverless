@@ -25,6 +25,7 @@ const typeDefs = gql`
     _id: ID
     name: String
     description: String
+    author: User
     createdAt: String
   }
 
@@ -33,8 +34,13 @@ const typeDefs = gql`
 
 const resolverReferences = {
   User: {
-    async posts({ _id }) {
-      return PostModel.findOne({ _id })
+    async posts(user) {
+      return await PostModel.find({ userId: user._id })
+    }
+  },
+  Post: {
+    author(post) {
+      return { __typename: 'User', _id: post.userId }
     }
   }
 }
@@ -51,12 +57,14 @@ mongoose
   .then((res) => {
     console.log('mongoose connected successfully')
     const server = new ApolloServer({
+      // @ts-ignore
       schema: buildFederatedSchema([
         {
           typeDefs,
           resolvers
         }
       ]),
+      // @ts-ignore
       context: ({ req, res, context }) => {
         return {
           req,
