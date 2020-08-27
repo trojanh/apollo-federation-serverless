@@ -1,8 +1,8 @@
 import UserModel from '../Model'
 export default async (parent, args, context) => {
   try {
-    const { name } = args.request.data
-
+    const { name: rawName = '' } = args.request.data
+    const name = rawName.trim().toLowerCase()
     const userCollection = await UserModel.findOne({
       name
     }).lean()
