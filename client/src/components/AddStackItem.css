@@ -1,0 +1,29 @@
+
+.container-group {
+  width: 90%;
+  margin: 10px 0;
+}
+.container-input {
+  height: 20px;
+  padding: 10px;
+  border-radius: 3px;
+  border-width: 1px;
+  border-style: solid;
+  border-color:#fff;
+  background-color:rgb(228 16 45);
+  box-sizing: border-box;
+  width: 100%;
+  resize: none;
+}
+
+.long {
+  height: 100px;
+}
+
+.container-label {
+  text-transform: capitalize;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 1.71429;
+}
