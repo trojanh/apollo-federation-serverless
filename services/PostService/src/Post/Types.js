@@ -70,6 +70,7 @@ type createPostResponse {
 
 type fetchAllPostsResponse {
     success : Boolean
+    hasMore: Boolean
     data : [Post]
     error : Error
 }
