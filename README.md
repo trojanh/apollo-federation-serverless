@@ -12,3 +12,12 @@ Access gateway Graphql playground on: http://localhost:3000/dev/graphql
 npm run install # installs dependencies for all services and gateway
 npm run dev:all # start all services and gateway servers
 ```
+For client
+
+```bash
+cd client && yarn && yarn start
+```
+
+Check front end at http://localhost:3001
+
+Graphql at http://localhost:3000/dev/graphql
