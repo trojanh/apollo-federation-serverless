@@ -23,12 +23,18 @@ const StackComponent = () => {
 
   console.log({ allPosts, hasMore })
   return (
-    <StackGrid columnWidth={200}>
-      <AddStackItem />
-      {allPosts.map((post) => (
-        <StackItem key={post._id} post={post} />
-      ))}
-    </StackGrid>
+    <div
+      style={{
+        backgroundColor: '#282c34'
+      }}
+    >
+      <StackGrid columnWidth={200}>
+        <AddStackItem />
+        {allPosts.map((post) => (
+          <StackItem key={post._id} post={post} />
+        ))}
+      </StackGrid>
+    </div>
   )
 }
 
